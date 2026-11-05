@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DỊCH VỤ PREMIUM - QUAN TUẤN MINH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #070913;
+      --card-bg: rgba(18, 22, 41, 0.7);
+      --border-color: rgba(0, 243, 255, 0.15);
+      --accent-cyan: #00f3ff;
+      --accent-pink: #ff007f;
+      --accent-purple: #9d4edd;
+      --text-white: #ffffff;
+      --text-sub: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-white);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(255, 0, 127, 0.1), transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(0, 243, 255, 0.1), transparent 40%);
+      background-attachment: fixed;
+    }
+    header {
+      background: rgba(7, 9, 19, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 100;
+      padding: 15px 5%;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo-box h1 {
+      font-size: 1.4rem; font-weight: 800;
+      background: linear-gradient(45deg, var(--accent-cyan), var(--accent-pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+    .logo-box p { font-size: 0.75rem; color: var(--text-sub); }
+    .contact-badge { display: flex; gap: 8px; flex-wrap: wrap; }
+    .c-btn {
+      padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      text-decoration: none; color: white; display: flex; align-items: center; gap: 6px;
+      transition: 0.3s;
+    }
+    .c-tg { background: rgba(0, 136, 204, 0.2); border: 1px solid #0088cc; color: #0088cc; }
+    .c-zl { background: rgba(0, 104, 255, 0.2); border: 1px solid #0068ff; color: #0068ff; }
+    .c-fb { background: rgba(24, 119, 242, 0.2); border: 1px solid #1877f2; color: #1877f2; }
+    .c-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,243,255,0.2); }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 25px 20px; }
+    
+    .hero {
+      text-align: center; margin-bottom: 30px; padding: 30px 20px;
+      background: var(--card-bg); border: 1px solid var(--border-color);
+      border-radius: 20px; backdrop-filter: blur(10px);
+    }
+    .hero h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+    .hero p { color: var(--text-sub); font-size: 0.95rem; max-width: 600px; margin: 0 auto; }
+    
+    .filter-bar {
+      display: flex; gap: 10px; margin-bottom: 30px; overflow-x: auto; padding-bottom: 10px;
+    }
+    .f-btn {
+      padding: 10px 20px; border-radius: 12px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); color: var(--text-sub); font-weight: 600;
+      cursor: pointer; transition: 0.3s; whitespace-nowrap;
+    }
+    .f-btn.active, .f-btn:hover {
+      background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+      color: white; border-color: transparent;
+    }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--card-bg); border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 20px; display: flex; flex-direction: column;
+      justify-content: space-between; transition: 0.3s; backdrop-filter: blur(8px);
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); box-shadow: 0 8px 25px rgba(0,243,255,0.15); }
+    .card-tag {
+      font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+      display: inline-block; width: fit-content; margin-bottom: 12px; text-transform: uppercase;
+    }
+    .tag-study { background: rgba(0, 243, 255, 0.15); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+    .tag-mxh { background: rgba(255, 0, 127, 0.15); color: var(--accent-pink); border: 1px solid var(--accent-pink); }
+    .tag-game { background: rgba(157, 78, 221, 0.15); color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+    
+    .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .card-desc { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 15px; line-height: 1.4; }
+    .price-box { margin-bottom: 15px; }
+    .price-main { font-size: 1.3rem; font-weight: 800; color: var(--accent-cyan); }
+    .price-old { font-size: 0.85rem; color: #64748b; text-decoration: line-through; margin-left: 8px; }
+    
+    .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .btn-buy {
+      padding: 10px; border-radius: 10px; border: none; font-weight: 700;
+      cursor: pointer; transition: 0.3s; text-align: center; text-decoration: none; font-size: 0.85rem;
+    }
+    .btn-tg { background: #0088cc; color: white; }
+    .btn-zl { background: #0068ff; color: white; }
+    .btn-buy:hover { opacity: 0.9; transform: scale(0.98); }
+
+    footer {
+      text-align: center; padding: 30px 20px; margin-top: 50px;
+      border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-box">
+      <h1>QUAN TUẤN MINH</h1>
+      <p>Dịch vụ Uy tín & Bản quyền 100%</p>
+    </div>
+    <div class="contact-badge">
+      <a href="https://t.me/ADM_TMinh" target="_blank" class="c-btn c-tg"><i class="fa-brands fa-telegram"></i> @ADM_TMinh</a>
+      <a href="https://zalo.me/0338215764" target="_blank" class="c-btn c-zl"><i class="fa-solid fa-phone"></i> 0338215764</a>
+      <a href="https://www.facebook.com/share/1CcxTgv5fk/" target="_blank" class="c-btn c-fb"><i class="fa-brands fa-facebook"></i> Facebook</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <h2>KHO DỊCH VỤ SỐ CHÍNH HÃNG</h2>
+      <p>Cung cấp tài khoản học tập AI, tăng tương tác MXH và Game bản quyền giá tốt nhất thị trường. Bảo hành uy tín 100%.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="f-btn active" onclick="filterCat('all')">Tất cả dịch vụ</button>
+      <button class="f-btn" onclick="filterCat('study')">Học tập & AI</button>
+      <button class="f-btn" onclick="filterCat('mxh')">Dịch vụ MXH</button>
+      <button class="f-btn" onclick="filterCat('game')">Game Bản Quyền</button>
+    </div>
+
+    <div class="grid" id="services-grid"></div>
+  </div>
+
+  <footer>
+    <p>© 2026 QUAN TUẤN MINH. All rights reserved.</p>
+    <p>Telegram: @ADM_TMinh | Zalo: 0338215764</p>
+  </footer>
+
+  <script>
+    const defaultData = [
+      { id: 1, title: 'ChatGPT Plus (GPT-4o)', cat: 'study', tag: 'study', price: '150.000đ', oldPrice: '450.000đ', desc: 'Tài khoản ChatGPT Plus chính hãng, truy cập GPT-4o không giới hạn.' },
+      { id: 2, title: 'Canva Pro Vĩnh Viễn', cat: 'study', tag: 'study', price: '99.000đ', oldPrice: '300.000đ', desc: 'Nâng cấp chính chủ trên email cá nhân, đầy đủ tính năng Pro.' },
+      { id: 3, title: 'Tăng 1.000 Follow TikTok', cat: 'mxh', tag: 'mxh', price: '50.000đ', oldPrice: '120.000đ', desc: 'Follow Việt thật 100%, bảo hành không tụt, lên nhanh trong 24h.' },
+      { id: 4, title: 'Tăng 10.000 Like Facebook', cat: 'mxh', tag: 'mxh', price: '80.000đ', oldPrice: '200.000đ', desc: 'Tăng tim/like bài viết chính chủ, an toàn tuyệt đối cho tài khoản.' },
+      { id: 5, title: 'Minecraft Java & Bedrock', cat: 'game', tag: 'game', price: '190.000đ', oldPrice: '700.000đ', desc: 'Key/Acc Minecraft chính hãng Mojang, đổi mail và skin thoải mái.' },
+      { id: 6, title: 'Garena Free Fire QC', cat: 'game', tag: 'game', price: '100.000đ', oldPrice: '250.000đ', desc: 'Nạp Kim Cương / Gói ưu đãi Free Fire chiết khấu cao.' }
+    ];
+
+    function getData() {
+      const stored = localStorage.getItem('qtm_services');
+      return stored ? JSON.parse(stored) : defaultData;
+    }
+
+    function render(cat = 'all') {
+      const grid = document.getElementById('services-grid');
+      const list = getData();
+      grid.innerHTML = '';
+
+      list.forEach(item => {
+        if (cat !== 'all' && item.cat !== cat) return;
+        const msg = encodeURIComponent(`Chào Quan Tuấn Minh, tôi muốn mua dịch vụ: ${item.title} (${item.price})`);
+        
+        const html = `
+          <div class="card">
+            <div>
+              <span class="card-tag tag-${item.tag}">${item.cat === 'study' ? 'Học tập' : item.cat === 'mxh' ? 'MXH' : 'Game'}</span>
+              <div class="card-title">${item.title}</div>
+              <div class="card-desc">${item.desc}</div>
+            </div>
+            <div>
+              <div class="price-box">
+                <span class="price-main">${item.price}</span>
+                <span class="price-old">${item.oldPrice}</span>
+              </div>
+              <div class="btn-group">
+                <a href="https://t.me/ADM_TMinh?text=${msg}" target="_blank" class="btn-buy btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+                <a href="https://zalo.me/0338215764" target="_blank" class="btn-buy btn-zl"><i class="fa-solid fa-phone"></i> Zalo</a>
+              </div>
+            </div>
+          </div>
+        `;
+        grid.innerHTML += html;
+      });
+    }
+
+    function filterCat(cat) {
+      document.querySelectorAll('.f-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      render(cat);
+    }
+
+    // Dynamic Live Signal
+    const bc = new BroadcastChannel('qtm_channel');
+    bc.onmessage = (e) => {
+      if (e.data.type === 'UPDATE_SERVICES') render();
+    };
+
+    // Initial session ping to Admin
+    bc.postURI = () => {
+      bc.postMessage({ type: 'USER_ONLINE', id: Date.now(), device: navigator.userAgent.includes('Mobile') ? 'Mobile' : 'PC' });
+    };
+    bc.postURI();
+
+    render();
+  </script>
+</body>
+</html>
